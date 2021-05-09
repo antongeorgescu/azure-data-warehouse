@@ -317,3 +317,11 @@ It is done in the same fashion showed in the Azure Datawarehouse with Azure Sql 
 [Query Parquet files using serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files)
 
 [Get Started with Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started)
+
+[Exploring the Capabilities of Azure Synapse Spark External Tables](https://www.mssqltips.com/sqlservertip/6745/azure-synapse-analytics-spark-sql-serverless-external-tables/)
+
+[How To Call Logic App Synchronously From Azure Data Factory](https://www.mssqltips.com/sqlservertip/6264/how-to-call-logic-app-synchronously-from-azure-data-factory/)
+
+[Create and configure a self-hosted integration runtime](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime)
+
+[Azure Data Factory documentation](https://docs.microsoft.com/en-ca/azure/data-factory/)
