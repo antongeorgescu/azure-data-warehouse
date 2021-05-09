@@ -30,53 +30,6 @@ The Python script under [studentdb_to_parquet.py](https://github.com/antongeorge
 
 ![python_dataframe_to_parquet](https://user-images.githubusercontent.com/6631390/117580178-b0218f00-b0c4-11eb-9696-d545e3035802.PNG)
 
-##### Azure Data Factory
-
-To start populating data with Azure Data Factory, firstly we need to create an instance. From the navigation pane, select **Data factories** and open it. You would find a screen as shown below. If you do not have any existing instance of Azure Data Factory, you would find the list blank. Click on the **Create data factory button** to start creating an instance.
-
-There are 3 steps required to create a "copy data" data factory, shown in the three snapshots below
-
-Select "Copy data" type of data factory
-
-![copy-data-factory](https://user-images.githubusercontent.com/6631390/117582463-1fe94700-b0d0-11eb-8911-5b671796ff91.PNG)
-
-Select "Author & Monitoring" to get into data factory design screens
-
-![author-and-monitor-data-factory](https://user-images.githubusercontent.com/6631390/117582426-efa1a880-b0cf-11eb-8372-609f08aeabbe.png)
-
-Go through the steps required to set up the data copy, including the AlviandaBlobStorage (where the parquet files are stored) and AlviandaDatabase where (Azure Sql Server database resides)
-
-You would find different options on the portal. Click on the Copy Data option and it would open up a new wizard as shown below. Let’s proceed step by step to provide the relevant source, destination and mapping details. In the first step, provide the task name and select the frequency of execution. For now, we can continue with defaults on this step and click on the **Next ** button.
-
-![azure-data-factory-copy-data-tool](https://user-images.githubusercontent.com/6631390/117582609-cd5c5a80-b0d0-11eb-9af5-5dea7861004f.png)
-
-![datafactory-copy-parquet-to-sql](https://user-images.githubusercontent.com/6631390/117582312-69856200-b0cf-11eb-937a-bf9acb5f31a1.PNG)
-
-Azure Data Factory supports many data sources. For our exercise, we need to select Azure Blob Storage as the linked service in the data source setup. Click on the continue button. Pick up **Azure Blob Storage** from the list.
-
-![azure-blob-storage-connectors](https://user-images.githubusercontent.com/6631390/117582668-24fac600-b0d1-11eb-84e5-ac82f8a6d529.png)
-
-Then choose the data destination (target) store. Select **Azure Sql Server** from the list:
-
-![azure-database-destination](https://user-images.githubusercontent.com/6631390/117582752-89b62080-b0d1-11eb-8a30-84e368187728.png)
-
-
-
-### Data Warehouse with Azure Synapse
-
----
-
-#### What is Azure Synapse
-
-Azure Synapse is an enterprise analytics service that accelerates time to insight across data warehouses and big data systems. Azure Synapse brings together the best of SQL technologies used in enterprise data warehousing, Spark technologies used for big data, Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.
-
-#### Apache Spark
-
-Apache Spark is a lightning-fast cluster computing designed for fast computation. It was built on top of Hadoop MapReduce and it extends the MapReduce model to efficiently use more types of computations which includes Interactive Queries and Stream Processing.
-
-#### Azure Data Lake Storage
-
-Combines the power of a Hadoop compatible file system with integrated hierarchical namespace with the massive scale and economy of Azure Blob Storage to help speed your transition from proof of concept to production.
 
 ### Data Warehouse with Azure Sql Server
 
@@ -113,3 +66,115 @@ This would act as the destination where we would populate the data from the sour
 ![azure-sqlserver-database](https://user-images.githubusercontent.com/6631390/117578897-9bda9380-b0be-11eb-8b0f-d56cf3aaa4fa.PNG)
 
 Once the above pre-requisites are setup, we can proceed with the rest of the exercise which would focus on populating the data from source to destination.
+
+##### Use Azure Data Factory for Data Intake
+
+To start populating data with Azure Data Factory, firstly we need to create an instance. From the navigation pane, select **Data factories** and open it. You would find a screen as shown below. If you do not have any existing instance of Azure Data Factory, you would find the list blank. Click on the **Create data factory button** to start creating an instance.
+
+There are 3 steps required to create a "copy data" data factory, shown in the three snapshots below
+
+Select "Copy data" type of data factory
+
+![copy-data-factory](https://user-images.githubusercontent.com/6631390/117582463-1fe94700-b0d0-11eb-8911-5b671796ff91.PNG)
+
+Select "Author & Monitoring" to get into data factory design screens
+
+![author-and-monitor-data-factory](https://user-images.githubusercontent.com/6631390/117582426-efa1a880-b0cf-11eb-8372-609f08aeabbe.png)
+
+Go through the steps required to set up the data copy, including the AlviandaBlobStorage (where the parquet files are stored) and AlviandaDatabase where (Azure Sql Server database resides)
+
+You would find different options on the portal. Click on the Copy Data option and it would open up a new wizard as shown below. Let’s proceed step by step to provide the relevant source, destination and mapping details. In the first step, provide the task name and select the frequency of execution. For now, we can continue with defaults on this step and click on the **Next ** button.
+
+![azure-data-factory-copy-data-tool](https://user-images.githubusercontent.com/6631390/117582609-cd5c5a80-b0d0-11eb-9af5-5dea7861004f.png)
+
+![datafactory-copy-parquet-to-sql](https://user-images.githubusercontent.com/6631390/117582312-69856200-b0cf-11eb-937a-bf9acb5f31a1.PNG)
+
+Azure Data Factory supports many data sources. For our exercise, we need to select Azure Blob Storage as the linked service in the data source setup. Click on the continue button. Pick up **Azure Blob Storage** from the list.
+
+![azure-blob-storage-connectors](https://user-images.githubusercontent.com/6631390/117582668-24fac600-b0d1-11eb-84e5-ac82f8a6d529.png)
+
+At this point you can display the content of the file that's stored in the blob and contains the source data.
+
+![datafactory-parquet-source](https://user-images.githubusercontent.com/6631390/117584387-9ee37d00-b0da-11eb-8ccc-bedf0f419bc6.PNG)
+
+Then choose the data destination (target) store. Select **Azure Sql Server** from the list:
+
+![azure-database-destination](https://user-images.githubusercontent.com/6631390/117582752-89b62080-b0d1-11eb-8a30-84e368187728.png)
+
+In this step, after the table mapping, we need to provide details of column mapping. You can choose to continue with the default mappings or change it. In this case, here we have changed the data type of one of the fields – Customer ID, from String to Int32 for testing purposes. After configuring the column mapping properties, click on the Next button.
+
+![datafactory-column-mapping](https://user-images.githubusercontent.com/6631390/117584172-6abb8c80-b0d9-11eb-8ebe-002041e89470.PNG)
+
+For demo purposes, we choose to "auto-create the table in Sql Server database." In real life, Sql Server will have a pre-defined schema and the data mapping will ensure that the values read from the blob storage files (eg parquet) will be stored in the proper tables, validated by tables validation rules.
+
+In this step, we can configure settings for data parallelism, data consistency and other relevant details. We can continue with defaults as these steps are optional. Click on the Next button.
+
+![performance-and-verification-settings](https://user-images.githubusercontent.com/6631390/117584258-ea495b80-b0d9-11eb-9e5c-8eef84cb5fdb.png)
+
+Finally, we are on the Summary page where the entire configuration details are available for review and editing. After confirming the same, click on the Next button.
+
+![datafactory-task-run](https://user-images.githubusercontent.com/6631390/117584284-18c73680-b0da-11eb-995e-7015bd633fdd.PNG)
+
+To verify the newly populated data in the Azure SQL Database, connect to the database using Azure Query Editor, SSMS, or Visual Studio as shown below, and you would find the data successfully loaded in a new table as shown below.
+
+![view-azure-sqlserver-data-with-visual-studio](https://user-images.githubusercontent.com/6631390/117584587-c555e800-b0db-11eb-9582-f31d157ee2d9.PNG)
+
+#### Reporting with Power BI
+
+In order to run Power BI analytics with data stored in Azure Sql Server, we need to first have Power BI Desktop application deployed on local machine. Power BI Desktop is free and can be downloaded from [https://powerbi.microsoft.com/en-us/downloads/](https://powerbi.microsoft.com/en-us/downloads/)
+
+As per Microsoft, with the Power BI Desktop you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experience.
+
+There are a few steps required to create and publish Data Warehouse reports (both canned and analytics) by using Power BI Desktop and Power BI wbe (located on Azure)
+
+Open Power BI Desktop and select the data source that sits in Azure Sql Server, under **loanstarpoc** server. The following snapshots show the sequence of selections.
+
+* Connect to Azure Sql Server database called StudentDW
+
+![PowerBI-Connect](https://user-images.githubusercontent.com/6631390/117584913-a22c3800-b0dd-11eb-8fc3-1e834bcbc5be.PNG)
+
+![PowerBI-Connect-Azure-db](https://user-images.githubusercontent.com/6631390/117584940-c0923380-b0dd-11eb-8af0-471e8289f4b1.PNG)
+
+![PowerBI-Connect-Azure-db-2](https://user-images.githubusercontent.com/6631390/117584967-ea4b5a80-b0dd-11eb-9231-9486234b4188.PNG)
+
+* Load the data from Azure Sql Server database
+
+![PowerBI-Load-Data](https://user-images.githubusercontent.com/6631390/117584973-fcc59400-b0dd-11eb-944b-53c2fe07fe44.PNG)
+
+* create and visualize a report
+
+![PowerBI-Report](https://user-images.githubusercontent.com/6631390/117585002-241c6100-b0de-11eb-9d94-1330c9afb195.PNG)
+
+
+* publish the report by using "Publish" button located on Power BI Desktop Dashboard
+
+Once published the report will show up in the corresponding workspace of Azure Power BI
+
+
+#### Reporting with ASP.NET Core MVC
+
+Another way is to use ASP.NET Core MVC application and ChartJs library to show the same data that Power BI displays. The .NET implementation requires coding and C# skills. Below isthe snapshot of an example built and stored in this repository under [https://github.com/antongeorgescu/azure-data-warehouse/tree/master/DWChart-ASPNETCore](https://github.com/antongeorgescu/azure-data-warehouse/tree/master/DWChart-ASPNETCore)
+
+![ASP_NET_Core_MVC_Reports](https://user-images.githubusercontent.com/6631390/117585146-cd635700-b0de-11eb-9596-b361d63d0fa9.PNG)
+
+#### Conclusion
+
+In this section, we performed an exercise with the setup of Azure blob storage and Azure SQL Database as the source and destination. We used Azure Data Factory as the integrator to source data from a CSV file hosted in a container on Azure blob storage, configured and created the data pipeline, and populated this data in Azure SQL Database as the destination for this pipeline. We also learned different artifacts of Azure Data Factory like Linked Services, Pipelines, Azure Data Factory instance and configuration settings.
+
+### Data Warehouse with Azure Synapse
+
+---
+
+This section presenst a different architecture, that relies on Azure Synapse. Although different in nature, both solutions are using common elements, therefore for the rest of the section we will make references to previous design wherever the same techniques and components are used.
+
+#### What is Azure Synapse
+
+Azure Synapse is an enterprise analytics service that accelerates time to insight across data warehouses and big data systems. Azure Synapse brings together the best of SQL technologies used in enterprise data warehousing, Spark technologies used for big data, Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.
+
+#### Apache Spark
+
+Apache Spark is a lightning-fast cluster computing designed for fast computation. It was built on top of Hadoop MapReduce and it extends the MapReduce model to efficiently use more types of computations which includes Interactive Queries and Stream Processing.
+
+#### Azure Data Lake Storage
+
+Combines the power of a Hadoop compatible file system with integrated hierarchical namespace with the massive scale and economy of Azure Blob Storage to help speed your transition from proof of concept to production.
