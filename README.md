@@ -177,10 +177,63 @@ This section presenst a different architecture, that relies on Azure Synapse. Al
 
 Azure Synapse is an enterprise analytics service that accelerates time to insight across data warehouses and big data systems. Azure Synapse brings together the best of SQL technologies used in enterprise data warehousing, Spark technologies used for big data, Pipelines for data integration and ETL/ELT, and deep integration with other Azure services such as Power BI, CosmosDB, and AzureML.
 
-#### Apache Spark
+#### Azure Synapse Architecture
+
+![synapse-architecture](https://user-images.githubusercontent.com/6631390/117586801-7793ac80-b0e8-11eb-9f2d-5fdee01210b5.png)
+
+#### Why Azure Synapse?
+
+Azure Synapse is in the same time a versatile and an integrated environment that puts under the same umbrella technologies, techniques and components that otherwise live in separation. Down below is a list of its most important features
+
+##### Synapse uses SQL
+
+**Synapse SQL** is a distributed query system for T-SQL that enables data warehousing and data virtualization scenarios and extends T-SQL to address streaming and machine learning scenarios.
+
+* Synapse SQL offers both **serverless** and **dedicated** resource models. For predictable performance and cost, create dedicated SQL pools to reserve processing power for data stored in SQL tables. For unplanned or bursty workloads, use the always-available, serverless SQL endpoint.
+* Use built-in **streaming** capabilities to land data from cloud data sources into SQL tables
+* Integrate AI with SQL by using **machine learning** models to score data using the [T-SQL PREDICT function](https://docs.microsoft.com/en-us/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)
+
+##### Synapse uses Apache Spark
 
 Apache Spark is a lightning-fast cluster computing designed for fast computation. It was built on top of Hadoop MapReduce and it extends the MapReduce model to efficiently use more types of computations which includes Interactive Queries and Stream Processing.
 
-#### Azure Data Lake Storage
+Apache Spark is the most popular open source big data engine used for data preparation, data engineering, ETL, and machine learning.
 
-Combines the power of a Hadoop compatible file system with integrated hierarchical namespace with the massive scale and economy of Azure Blob Storage to help speed your transition from proof of concept to production.
+* ML models with SparkML algorithms and AzureML integration for Apache Spark 2.4 with built-in support for Linux Foundation Delta Lake.
+* Simplified resource model that frees you from having to worry about managing clusters.
+* Fast Spark start-up and aggressive autoscaling.
+* Built-in support for .NET for Spark allowing you to reuse your C# expertise and existing .NET code within a Spark application.
+
+##### Synapse uses PolyBase
+
+PolyBase is a tool built in with SQL Server (2016 and up) and Azure SQL Data Warehouse that allows you to query data from outside files stored in Azure Blob Storage or Azure Data Lake Store. Once we define a file type within SQL Server Management Studio (SSMS), we can simply insert data from the file into a structured external table. Now since the structured table is ready, we can compare and update tables using the external table and the destination table.
+
+The advantages of using PolyBase directly comes with the ability to use familiar SQL queries to much of transforming and copying activities within the data warehouse.
+
+##### Synapse uses Azure Data Lake Storage
+
+Data Lake combines the power of a Hadoop compatible file system with integrated hierarchical namespace with the massive scale and economy of Azure Blob Storage to help speed your transition from proof of concept to production.
+
+Azure Synapse removes the traditional technology barriers between using SQL and Spark together. You can seamlessly mix and match based on your needs and expertise.
+
+* Tables defined on files in the data lake are seamlessly consumed by either Spark or Hive.
+* SQL and Spark can directly explore and analyze Parquet, CSV, TSV, and JSON files stored in the data lake.
+* Fast, scalable data loading between SQL and Spark databases
+
+##### Synapse uses built-in data integration
+
+Azure Synapse contains the same Data Integration engine and experiences as Azure Data Factory, allowing you to create rich at-scale ETL pipelines without leaving Azure Synapse Analytics.
+
+* Ingest data from 90+ data sources
+* Code-Free ETL with Data flow activities
+* Orchestrate notebooks, Spark jobs, stored procedures, SQL scripts, and more
+
+### References
+
+---
+
+[Populate Azure SQL Database from Azure Blob Storage using Azure Data Factory](https://www.sqlshack.com/populate-azure-sql-database-from-azure-blob-storage-using-azure-data-factory/)
+
+[Configure PolyBase to access external data in Azure Blob Storage](https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-configure-azure-blob-storage?view=sql-server-ver15)
+
+[Query Parquet files using serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files)
