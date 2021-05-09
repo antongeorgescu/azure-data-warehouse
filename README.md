@@ -230,7 +230,7 @@ Azure Synapse contains the same Data Integration engine and experiences as Azure
 
 #### Main capabilities of Synapse
 
-##### The Built-in serverless SQL pool
+##### Analyze with Built-in serverless SQL pool
 
 Serverless SQL pools let you use SQL without having to reserve capacity. Billing for a serverless SQL pool is based on the amount of data processed to run the query and not the number of nodes used to run the query.
 
@@ -249,6 +249,63 @@ This is done by using a wildcard applied to the files having "Courses" in their 
 
 The query above only queries instructorCourses.parquet file
 
+#### Analyze with Apache Spark Pool
+
+A serverless Spark pool is a way of indicating how a user wants to work with Spark. When you start using a pool a Spark session is created if needed. The pool controls how many Spark resources will be used by that session and how long the session will last before it automatically pauses. You pay for spark resources used during that session not for the pool itself. In this way a Spark pool lets you work with Spark, without having to worry managing clusters. This is similar to how a serverless SQL pool works.
+
+##### Task: Create a Spark database
+
+![SparkPool_CreateDb_Student](https://user-images.githubusercontent.com/6631390/117587366-9b0c2680-b0eb-11eb-8b2d-70b9ddd72a30.PNG)
+
+##### Task: Create a Spark table
+
+![SparkPool_CreateTable](https://user-images.githubusercontent.com/6631390/117587396-c3942080-b0eb-11eb-9496-6fd1b990992c.PNG)
+
+##### Task: List Spark tables in database
+
+![SparkPool_Table_List](https://user-images.githubusercontent.com/6631390/117587420-e32b4900-b0eb-11eb-8a22-137848a17001.PNG)
+
+##### Task: Explore data from Spark tables, in both tabular and chart formats
+
+![SparkPool_ExploreDb_Student](https://user-images.githubusercontent.com/6631390/117587460-140b7e00-b0ec-11eb-9b67-eccbe227ea9b.PNG)
+
+![SparkPool_Chart_PopularCourses](https://user-images.githubusercontent.com/6631390/117587639-f8ed3e00-b0ec-11eb-9b8c-332a9da54f2f.PNG)
+
+![SparkPool_Query_AllCourses](https://user-images.githubusercontent.com/6631390/117587484-271e4e00-b0ec-11eb-8728-4b9b261e8f16.PNG)
+
+
+The Sql Pool queries saved for the purpose of this tutorial are in
+
+[sqlpool_query_instructorCourses.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/Azure-Data-Warehouse/Synapse%20-%20Snapshots%20and%20Scripts/SqlPoolQueries/sqlpool_query_instructorCourses.sql)
+
+[sqlpool_query_studentCourses.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/Azure-Data-Warehouse/Synapse%20-%20Snapshots%20and%20Scripts/SqlPoolQueries/sqlpool_query_studentCourses.sql)
+
+
+
+Task: Inspect Spark database schema
+
+![SparkPool_Query_Schema](https://user-images.githubusercontent.com/6631390/117587503-49b06700-b0ec-11eb-96a8-d2858d5c0774.PNG)
+
+#### Analyze data with dedicated SQL pools
+
+A dedicated SQL pool consumes billable resources as long as it's active. You can pause the pool later to reduce costs.
+
+Below are a few examples of using the **dedicated sql pool** for querying data
+
+![DW_Query](https://user-images.githubusercontent.com/6631390/117587587-ba578380-b0ec-11eb-9c9c-5b9305e9d0c5.PNG)
+
+![DW_Query_2](https://user-images.githubusercontent.com/6631390/117587604-cb07f980-b0ec-11eb-812c-3c561d42316e.PNG)
+
+
+#### Integration with Pipelines
+
+It is done in the same fashion showed in the Azure Datawarehouse with Azure Sql Serversection above, i.e. by using Data Factory
+
+#### Reporting
+
+It is done in the same fashion showed in the Azure Datawarehouse with Azure Sql Serversection above, i.e. by using Power BI Desktop/Power BI, ASP.NET Core MVC, Excel etc.
+
+
 ### References
 
 ---
@@ -258,3 +315,5 @@ The query above only queries instructorCourses.parquet file
 [Configure PolyBase to access external data in Azure Blob Storage](https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-configure-azure-blob-storage?view=sql-server-ver15)
 
 [Query Parquet files using serverless SQL pool in Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files)
+
+[Get Started with Azure Synapse Analytics](https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started)
