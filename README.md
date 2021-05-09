@@ -228,6 +228,27 @@ Azure Synapse contains the same Data Integration engine and experiences as Azure
 * Code-Free ETL with Data flow activities
 * Orchestrate notebooks, Spark jobs, stored procedures, SQL scripts, and more
 
+#### Main capabilities of Synapse
+
+##### The Built-in serverless SQL pool
+
+Serverless SQL pools let you use SQL without having to reserve capacity. Billing for a serverless SQL pool is based on the amount of data processed to run the query and not the number of nodes used to run the query.
+
+Every workspace comes with a pre-configured serverless SQL pool called **Built-in** .
+
+Below you can find a few examples of data explration applied to the parquet file extracted from StudentCourse sample database. See this extraction explained in detail under "**Deploy an on-prem Sql Server database**" above
+
+![DbExplore_Query_AllCourses](https://user-images.githubusercontent.com/6631390/117587237-e3771480-b0ea-11eb-82ac-666e741021e3.PNG)
+
+The query above executes a union between 2 parquet files (StudentCourses.parquet & InstructorCourses.parquet)
+
+This is done by using a wildcard applied to the files having "Courses" in their names
+
+
+![DbExplore_Query_InstructorCourses](https://user-images.githubusercontent.com/6631390/117587286-233dfc00-b0eb-11eb-8a77-175836d9696c.PNG)
+
+The query above only queries instructorCourses.parquet file
+
 ### References
 
 ---
