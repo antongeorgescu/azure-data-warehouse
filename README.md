@@ -30,6 +30,38 @@ The Python script under [studentdb_to_parquet.py](https://github.com/antongeorge
 
 ![python_dataframe_to_parquet](https://user-images.githubusercontent.com/6631390/117580178-b0218f00-b0c4-11eb-9696-d545e3035802.PNG)
 
+##### Azure Data Factory
+
+To start populating data with Azure Data Factory, firstly we need to create an instance. From the navigation pane, select **Data factories** and open it. You would find a screen as shown below. If you do not have any existing instance of Azure Data Factory, you would find the list blank. Click on the **Create data factory button** to start creating an instance.
+
+There are 3 steps required to create a "copy data" data factory, shown in the three snapshots below
+
+Select "Copy data" type of data factory
+
+![copy-data-factory](https://user-images.githubusercontent.com/6631390/117582463-1fe94700-b0d0-11eb-8911-5b671796ff91.PNG)
+
+Select "Author & Monitoring" to get into data factory design screens
+
+![author-and-monitor-data-factory](https://user-images.githubusercontent.com/6631390/117582426-efa1a880-b0cf-11eb-8372-609f08aeabbe.png)
+
+Go through the steps required to set up the data copy, including the AlviandaBlobStorage (where the parquet files are stored) and AlviandaDatabase where (Azure Sql Server database resides)
+
+You would find different options on the portal. Click on the Copy Data option and it would open up a new wizard as shown below. Let’s proceed step by step to provide the relevant source, destination and mapping details. In the first step, provide the task name and select the frequency of execution. For now, we can continue with defaults on this step and click on the **Next ** button.
+
+![azure-data-factory-copy-data-tool](https://user-images.githubusercontent.com/6631390/117582609-cd5c5a80-b0d0-11eb-9af5-5dea7861004f.png)
+
+![datafactory-copy-parquet-to-sql](https://user-images.githubusercontent.com/6631390/117582312-69856200-b0cf-11eb-937a-bf9acb5f31a1.PNG)
+
+Azure Data Factory supports many data sources. For our exercise, we need to select Azure Blob Storage as the linked service in the data source setup. Click on the continue button. Pick up **Azure Blob Storage** from the list.
+
+![azure-blob-storage-connectors](https://user-images.githubusercontent.com/6631390/117582668-24fac600-b0d1-11eb-84e5-ac82f8a6d529.png)
+
+Then choose the data destination (target) store. Select **Azure Sql Server** from the list:
+
+![azure-database-destination](https://user-images.githubusercontent.com/6631390/117582752-89b62080-b0d1-11eb-8a30-84e368187728.png)
+
+
+
 ### Data Warehouse with Azure Synapse
 
 ---
