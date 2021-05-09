@@ -115,6 +115,12 @@ Finally, we are on the Summary page where the entire configuration details are a
 
 ![datafactory-task-run](https://user-images.githubusercontent.com/6631390/117584284-18c73680-b0da-11eb-995e-7015bd633fdd.PNG)
 
+Th schema of StudentDW database can be seen by using Query Editor
+
+![loanstar-sqldb-schema](https://user-images.githubusercontent.com/6631390/117585262-7316c600-b0df-11eb-839b-9d5a12bdda5f.PNG)
+
+
+
 To verify the newly populated data in the Azure SQL Database, connect to the database using Azure Query Editor, SSMS, or Visual Studio as shown below, and you would find the data successfully loaded in a new table as shown below.
 
 ![view-azure-sqlserver-data-with-visual-studio](https://user-images.githubusercontent.com/6631390/117584587-c555e800-b0db-11eb-9582-f31d157ee2d9.PNG)
