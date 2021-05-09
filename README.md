@@ -2,6 +2,28 @@
 
 There are many ways to skin a cat in Azure, and that is quite applicable to the case when you need to build a Data Warehouse. For the purpose of this presentation we will cover two design choices: one that uses Azure Synapse / Power BI, the other one that uses Azure Sql Server / Power BI.
 
+##### Deploy an on-prem Sql Server database
+
+For the purpose of demonstrating the two different implementations of an Azure Data Warehouse, we will need to setup a sample data source, in the shape of a database deployed on-prem (your own local machine.) This database is a sample of Student Courses information and has the following schema.
+
+![Student-Courses-DB-Schema](https://user-images.githubusercontent.com/6631390/117579152-a6495d00-b0bf-11eb-9a2e-4a66bb1fd3be.PNG)
+
+The following 2 Sql scripts are used to create a new instance of StudentCourses database and populate it with sample data.
+
+[Create_StudentCoursesDatabase.sql](https://https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/Create_StudentCoursesDatabase.sql)
+
+[Populate_StudentCoursesDatabase.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/Populate_StudentCoursesDatabase.sql)
+
+*Note*: The following two views are providing the data sources for two parquet files that will be uploaded in Azure Blob Storage (schemas are provided under each):
+
+[Create_vwInstructorCourseDepartment.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwInstructorCourseDepartment.sql)
+
+![vwInstructorCourseDepartment](https://user-images.githubusercontent.com/6631390/117579387-a007b080-b0c0-11eb-93de-bfd244907191.PNG)
+
+[Create_vwStudentCourseGrade.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwStudentCourseGrade.sql)
+
+![vwStudentCourseGrade](https://user-images.githubusercontent.com/6631390/117579425-c3326000-b0c0-11eb-8721-a1e730ad792f.PNG)
+
 ### Data Warehouse with Azure Synapse
 
 #### What is Azure Synapse
@@ -49,25 +71,3 @@ This would act as the destination where we would populate the data from the sour
 ![azure-sqlserver-database](https://user-images.githubusercontent.com/6631390/117578897-9bda9380-b0be-11eb-8b0f-d56cf3aaa4fa.PNG)
 
 Once the above pre-requisites are setup, we can proceed with the rest of the exercise which would focus on populating the data from source to destination.
-
-##### Deploy an on-prem Sql Server database
-
-This database is a sample of Student Courses information and has the following schema.
-
-![Student-Courses-DB-Schema](https://user-images.githubusercontent.com/6631390/117579152-a6495d00-b0bf-11eb-9a2e-4a66bb1fd3be.PNG)
-
-The following 2 Sql scripts are used to create a new instance of StudentCourses database and populate it with sample data.
-
-[Create_StudentCoursesDatabase.sql](https://https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/Create_StudentCoursesDatabase.sql)
-
-[Populate_StudentCoursesDatabase.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/Populate_StudentCoursesDatabase.sql)
-
-*Note*: The following two views are providing the data sources for two parquet files that will be uploaded in Azure Blob Storage (schemas are provided under each):
-
-[Create_vwInstructorCourseDepartment.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwInstructorCourseDepartment.sql)
-
-![vwInstructorCourseDepartment](https://user-images.githubusercontent.com/6631390/117579387-a007b080-b0c0-11eb-93de-bfd244907191.PNG)
-
-[Create_vwStudentCourseGrade.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwStudentCourseGrade.sql)
-
-![vwStudentCourseGrade](https://user-images.githubusercontent.com/6631390/117579425-c3326000-b0c0-11eb-8721-a1e730ad792f.PNG)
