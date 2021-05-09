@@ -24,7 +24,15 @@ The following 2 Sql scripts are used to create a new instance of StudentCourses 
 
 ![vwStudentCourseGrade](https://user-images.githubusercontent.com/6631390/117579425-c3326000-b0c0-11eb-8721-a1e730ad792f.PNG)
 
+##### Generate parquet files from data source
+
+The Python script under [studentdb_to_parquet.py](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/PythonScripts/studentdb_to_parquet.py) extracts the data from sample database and creates a parquet file (as alternatives, csv and json files can be created as well.)
+
+![python_dataframe_to_parquet](https://user-images.githubusercontent.com/6631390/117580178-b0218f00-b0c4-11eb-9696-d545e3035802.PNG)
+
 ### Data Warehouse with Azure Synapse
+
+---
 
 #### What is Azure Synapse
 
@@ -40,6 +48,8 @@ Combines the power of a Hadoop compatible file system with integrated hierarchic
 
 ### Data Warehouse with Azure Sql Server
 
+---
+
 #### Solution Overview
 
 In a Data Lake model on Azure Cloud, data generally lands on the Azure storage layer using the Azure Blob Storage, especially for semi-structured data. Data may be exported from various data sources in the form of JSON, CSV, Parquet, ORC and various formats and hosted on blob storage, from where it would be channeled to other purpose-specific repositories. Azure SQL Database is one of the most popular data repositories for hosting structured data on the Azure cloud. From this perspective, Azure blob storage is one of the most frequently used data sources and Azure SQL Database is of the most frequently used data destinations. Azure Data Factory on Azure cloud helps to transport and transform data from-and-to to a variety of data repositories. In this article, we will learn how to use Azure Data Factory to populate data from Azure Blob Storage to Azure SQL Database.
@@ -52,7 +62,7 @@ It is a scalable object storage for documents, videos, pictures and unstructured
 
 In this approach, we will source data from Azure Blob storage and populate the same into Azure SQL Database. For this, we need a few items to be set up, before we can start focusing on the actual exercise of populating the destination with the source using Azure Data Factory.
 
-##### Initial Steps Required
+##### Steps Required
 
 * Setup an Azure Storage Account
 
