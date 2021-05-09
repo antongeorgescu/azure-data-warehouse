@@ -62,9 +62,12 @@ The following 2 Sql scripts are used to create a new instance of StudentCourses 
 
 [Populate_StudentCoursesDatabase.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/Populate_StudentCoursesDatabase.sql)
 
-Note: The following two views are providing the data sources for two parquet files that will be uploaded in Azure Blob Storage (schemas are provided under each):
+*Note*: The following two views are providing the data sources for two parquet files that will be uploaded in Azure Blob Storage (schemas are provided under each):
 
+[Create_vwInstructorCourseDepartment.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwInstructorCourseDepartment.sql)
 
 ![vwInstructorCourseDepartment](https://user-images.githubusercontent.com/6631390/117579387-a007b080-b0c0-11eb-93de-bfd244907191.PNG)
+
+[Create_vwStudentCourseGrade.sql](https://github.com/antongeorgescu/azure-data-warehouse/blob/master/SampleDatabase/create_vwStudentCourseGrade.sql)
 
 ![vwStudentCourseGrade](https://user-images.githubusercontent.com/6631390/117579425-c3326000-b0c0-11eb-8721-a1e730ad792f.PNG)
