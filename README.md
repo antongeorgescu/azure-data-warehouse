@@ -1,3 +1,5 @@
+## Two Ways to Build an Azure Data Warehouse
+
 ### Introduction
 
 There are many ways to skin a cat in Azure, and that is quite applicable to the case when you need to build a Data Warehouse. For the purpose of this presentation we will cover two design choices: one that uses Azure Synapse / Power BI, the other one that uses Azure Sql Server / Power BI.
